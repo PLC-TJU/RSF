@@ -40,87 +40,27 @@ We express our gratitude to the open-source community, which facilitates the bro
 
 We used the following public datasets:
 
-- [<img src="https://img.shields.io/badge/DOI-Pan2023-blue"></img>](https://doi.org/10.7910/DVN/O5CQFA) Provides cross-session left/right hand MI-EEG data from 14 subjects. Paper link: [10.1088/1741-2552/ad0a01](https://doi.org/10.1088/1741-2552/ad0a01) 
-- [<img src="https://img.shields.io/badge/DOI-Cho2017-green"></img>](http://gigadb.org/dataset/100295) Provides left/right hand MI-EEG data from 52 subjects. Paper link: [10.1093/gigascience/gix034](https://doi.org/10.1093/gigascience/gix034) 
-- [<img src="https://img.shields.io/badge/DOI-Lee2019-orange"></img>](https://doi.org/10.1093/gigascience/giz002) Provides left/right hand MI-EEG data from 54 subjects. Paper link: [10.1093/gigascience/giz002](https://doi.org/10.1093/gigascience/giz002) 
-- [<img src="https://img.shields.io/badge/DOI-Physionet-red"></img>](https://www.physionet.org/content/eegmmidb/1.0.0/) Provides left/right hand MI-EEG data from 106/109 subjects. Paper links: [10.1109/TBME.2004.827072](https://doi.org/10.1109/TBME.2004.827072), [10.1161/01.cir.101.23.e215](https://doi.org/10.1161/01.cir.101.23.e215)
-- [<img src="https://img.shields.io/badge/DOI-Shin2017-purple"></img>](http://doc.ml.tu-berlin.de/hBCI) Provides left/right hand MI-EEG data from 29 subjects. Paper link: [10.1109/TNSRE.2016.2628057](https://doi.org/10.1109/TNSRE.2016.2628057)
-- [<img src="https://img.shields.io/badge/DOI-Yi2014-yellow"></img>](https://doi.org/10.7910/DVN/27306) Provides seven-class MI-EEG data from 10 subjects. Paper link: [10.1371/journal.pone.0114853](https://doi.org/10.1371/journal.pone.0114853)
+- [<img src="https://img.shields.io/badge/DOI-Pan2023-blue"></img>](https://doi.org/10.7910/DVN/O5CQFA) Provides cross-session left/right hand MI-EEG data from 14 subjects. 
+- [<img src="https://img.shields.io/badge/DOI-Cho2017-green"></img>](http://gigadb.org/dataset/100295) Provides left/right hand MI-EEG data from 52 subjects. 
+- [<img src="https://img.shields.io/badge/DOI-Lee2019-orange"></img>](https://doi.org/10.1093/gigascience/giz002) Provides left/right hand MI-EEG data from 54 subjects. 
+- [<img src="https://img.shields.io/badge/DOI-Physionet-red"></img>](https://www.physionet.org/content/eegmmidb/1.0.0/) Provides left/right hand MI-EEG data from 106/109 subjects. 
+- [<img src="https://img.shields.io/badge/DOI-Shin2017-purple"></img>](http://doc.ml.tu-berlin.de/hBCI) Provides left/right hand MI-EEG data from 29 subjects. 
+- [<img src="https://img.shields.io/badge/DOI-Yi2014-yellow"></img>](https://doi.org/10.7910/DVN/27306) Provides seven-class MI-EEG data from 10 subjects. 
 
-<p align="center">
-<strong>Table 1 Details of all public datasets</strong>
-</p>
+**Table 1** Details of all public datasets
 
-<div style="text-align: center;">
-  <table>
-    <tr>
-      <th>Dataset</th>
-      <th>Classes</th>
-      <th>Trials</th>
-      <th>Channels</th>
-      <th>Duration (s)</th>
-      <th>Subjects</th>
-    </tr>
-    <tr>
-      <td>Cho2017</td>
-      <td>left/right hand</td>
-      <td>200</td>
-      <td>64</td>
-      <td>3</td>
-      <td>52</td>
-    </tr>
-    <tr>
-      <td>Lee2019</td>
-      <td>left/right hand</td>
-      <td>200</td>
-      <td>62</td>
-      <td>4</td>
-      <td>54</td>
-    </tr>
-    <tr>
-      <td>Pan2023</td>
-      <td>left/right hand</td>
-      <td>240</td>
-      <td>28</td>
-      <td>4</td>
-      <td>14</td>
-    </tr>
-    <tr>
-      <td>PhysioNet</td>
-      <td>left/right hand</td>
-      <td>40-60</td>
-      <td>64</td>
-      <td>3</td>
-      <td>106</td>
-    </tr>
-    <tr>
-      <td>Shin2017</td>
-      <td>left/right hand</td>
-      <td>60</td>
-      <td>30</td>
-      <td>4</td>
-      <td>29</td>
-    </tr>
-    <tr>
-      <td>Yi2014</td>
-      <td>left/right hand</td>
-      <td>160</td>
-      <td>60</td>
-      <td>4</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <td><strong>Total:</strong></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><strong>265</strong></td>
-    </tr>
-  </table>
-</div>
+| Dataset                                                |     Classes     | Trials | Channels | Duration (s) | Subjects |
+| :----------------------------------------------------- | :-------------: | :----: | :------: | :----------: | :------: |
+| [Cho2017](https://doi.org/10.1093/gigascience/gix034)  | left/right hand |  200   |    64    |      3       |    52    |
+| [Lee2019](https://doi.org/10.1093/gigascience/giz002)  | left/right hand |  200   |    62    |      4       |    54    |
+| [Pan2023](https://doi.org/10.1088/1741-2552/ad0a01)    | left/right hand |  240   |    28    |      4       |    14    |
+| [PhysioNet](https://doi.org/10.1109/TBME.2004.827072)  | left/right hand | 40-60  |    64    |      3       |   106    |
+| [Shin2017](https://doi.org/10.1109/TNSRE.2016.2628057) | left/right hand |   60   |    30    |      4       |    29    |
+| [Yi2014](https://doi.org/10.1371/journal.pone.0114853) | left/right hand |  160   |    60    |      4       |    10    |
+| **Total:**                                             |                 |        |          |              | **265**  |
+
 
 ## License and Attribution
 
-© 2024. All rights reserved.
+© 2024 Lc.Pan. All rights reserved.
 Please refer to the [LICENSE](./LICENSE) file for details on the licensing of our code.

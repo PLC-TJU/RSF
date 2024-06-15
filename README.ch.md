@@ -40,85 +40,23 @@
 
 我们使用了以下公开数据集：
 
-- [<img src="https://img.shields.io/badge/DOI-Pan2023-blue"></img>](https://doi.org/10.7910/DVN/O5CQFA) 提供了14名受试者跨会话的左/右手MI-EEG数据。论文链接：[10.1088/1741-2552/ad0a01](https://doi.org/10.1088/1741-2552/ad0a01) 
-- [<img src="https://img.shields.io/badge/DOI-Cho2017-green"></img>](http://gigadb.org/dataset/100295) 提供了52名受试者的左/右手MI-EEG数据。论文链接：[10.1093/gigascience/gix034](https://doi.org/10.1093/gigascience/gix034) 
-- [<img src="https://img.shields.io/badge/DOI-Lee2019-orange"></img>](https://doi.org/10.1093/gigascience/giz002) 提供了54名受试者的左/右手MI-EEG数据。论文链接：[10.1093/gigascience/giz002](https://doi.org/10.1093/gigascience/giz002) 
-- [<img src="https://img.shields.io/badge/DOI-Physionet-red"></img>](https://www.physionet.org/content/eegmmidb/1.0.0/) 提供了106/109名受试者的左/右手MI-EEG数据。论文链接：[10.1109/TBME.2004.827072](https://doi.org/10.1109/TBME.2004.827072)，[10.1161/01.cir.101.23.e215](https://doi.org/10.1161/01.cir.101.23.e215)
-- [<img src="https://img.shields.io/badge/DOI-Shin2017-purple"></img>](http://doc.ml.tu-berlin.de/hBCI) 提供了29名受试者的左/右手MI-EEG数据。论文链接：[10.1109/TNSRE.2016.2628057](https://doi.org/10.1109/TNSRE.2016.2628057)
-- [<img src="https://img.shields.io/badge/DOI-Yi2014-yellow"></img>](https://doi.org/10.7910/DVN/27306) 提供了10名受试者的七种类别的MI-EEG数据。论文链接：[10.1371/journal.pone.0114853](https://doi.org/10.1371/journal.pone.0114853)
+- [<img src="https://img.shields.io/badge/DOI-Pan2023-blue"></img>](https://doi.org/10.7910/DVN/O5CQFA) 提供了14名受试者跨会话的左/右手MI-EEG数据。
+- [<img src="https://img.shields.io/badge/DOI-Cho2017-green"></img>](http://gigadb.org/dataset/100295) 提供了52名受试者的左/右手MI-EEG数据。
+- [<img src="https://img.shields.io/badge/DOI-Lee2019-orange"></img>](https://doi.org/10.1093/gigascience/giz002) 提供了54名受试者的左/右手MI-EEG数据。
+- [<img src="https://img.shields.io/badge/DOI-Physionet-red"></img>](https://www.physionet.org/content/eegmmidb/1.0.0/) 提供了106/109名受试者的左/右手MI-EEG数据。
+- [<img src="https://img.shields.io/badge/DOI-Shin2017-purple"></img>](http://doc.ml.tu-berlin.de/hBCI) 提供了29名受试者的左/右手MI-EEG数据。
+- [<img src="https://img.shields.io/badge/DOI-Yi2014-yellow"></img>](https://doi.org/10.7910/DVN/27306) 提供了10名受试者的七种类别的MI-EEG数据。
 
-<p align="center">
-<strong>Table 1 Details of all public datasets</strong>
-</p>
-
-<div style="text-align: center;">
-  <table>
-    <tr>
-      <th>Dataset</th>
-      <th>Classes</th>
-      <th>Trials</th>
-      <th>Channels</th>
-      <th>Duration (s)</th>
-      <th>Subjects</th>
-    </tr>
-    <tr>
-      <td>Cho2017</td>
-      <td>left/right hand</td>
-      <td>200</td>
-      <td>64</td>
-      <td>3</td>
-      <td>52</td>
-    </tr>
-    <tr>
-      <td>Lee2019</td>
-      <td>left/right hand</td>
-      <td>200</td>
-      <td>62</td>
-      <td>4</td>
-      <td>54</td>
-    </tr>
-    <tr>
-      <td>Pan2023</td>
-      <td>left/right hand</td>
-      <td>240</td>
-      <td>28</td>
-      <td>4</td>
-      <td>14</td>
-    </tr>
-    <tr>
-      <td>PhysioNet</td>
-      <td>left/right hand</td>
-      <td>40-60</td>
-      <td>64</td>
-      <td>3</td>
-      <td>106</td>
-    </tr>
-    <tr>
-      <td>Shin2017</td>
-      <td>left/right hand</td>
-      <td>60</td>
-      <td>30</td>
-      <td>4</td>
-      <td>29</td>
-    </tr>
-    <tr>
-      <td>Yi2014</td>
-      <td>left/right hand</td>
-      <td>160</td>
-      <td>60</td>
-      <td>4</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <td><strong>Total:</strong></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><strong>265</strong></td>
-    </tr>
-  </table>
-</div>
+**Table 1** Details of all public datasets
+| Dataset                                                |     Classes     | Trials | Channels | Duration (s) | Subjects |
+| :----------------------------------------------------- | :-------------: | :----: | :------: | :----------: | :------: |
+| [Cho2017](https://doi.org/10.1093/gigascience/gix034)  | left/right hand |  200   |    64    |      3       |    52    |
+| [Lee2019](https://doi.org/10.1093/gigascience/giz002)  | left/right hand |  200   |    62    |      4       |    54    |
+| [Pan2023](https://doi.org/10.1088/1741-2552/ad0a01)    | left/right hand |  240   |    28    |      4       |    14    |
+| [PhysioNet](https://doi.org/10.1109/TBME.2004.827072)  | left/right hand | 40-60  |    64    |      3       |   106    |
+| [Shin2017](https://doi.org/10.1109/TNSRE.2016.2628057) | left/right hand |   60   |    30    |      4       |    29    |
+| [Yi2014](https://doi.org/10.1371/journal.pone.0114853) | left/right hand |  160   |    60    |      4       |    10    |
+| **Total:**                                             |                 |        |          |              | **265**  |
 
 ## 许可和署名
 
