@@ -3,7 +3,6 @@
 # Date: 2024/3/18
 # License: MIT License
 
-# 公共工具库
 import os, time
 import json
 import numpy as np
@@ -20,8 +19,6 @@ from moabb.datasets import (Cho2017,
                             Lee2019_MI,
                             Shin2017A,)
 from loaddata.pan2023 import Pan2023
-
-# 私有工具库
 from loaddata import Dataset_Left_Right_MI
 from deep_learning.dl_classifier import DL_Classifier
 from rsf import RSF
