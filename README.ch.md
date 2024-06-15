@@ -51,19 +51,74 @@
 <strong>Table 1 Details of all public datasets</strong>
 </p>
 
-<p align="center">
-
-| Dataset    | Classes         | Trials | Channels | Duration (s) | Subjects |
-| ---------- | --------------- | ------ | -------- | ------------ | -------- |
-| Cho2017    | left/right hand | 200    | 64       | 3            | 52       |
-| Lee2019    | left/right hand | 200    | 62       | 4            | 54       |
-| Pan2023    | left/right hand | 240    | 28       | 4            | 14       |
-| PhysioNet  | left/right hand | 40-60  | 64       | 3            | 106      |
-| Shin2017   | left/right hand | 60     | 30       | 4            | 29       |
-| Yi2014     | left/right hand | 160    | 60       | 4            | 10       |
-| **Total:** |                 |        |          |              | **265**  |
-
-</p>
+<div style="text-align: center;">
+  <table>
+    <tr>
+      <th>Dataset</th>
+      <th>Classes</th>
+      <th>Trials</th>
+      <th>Channels</th>
+      <th>Duration (s)</th>
+      <th>Subjects</th>
+    </tr>
+    <tr>
+      <td>Cho2017</td>
+      <td>left/right hand</td>
+      <td>200</td>
+      <td>64</td>
+      <td>3</td>
+      <td>52</td>
+    </tr>
+    <tr>
+      <td>Lee2019</td>
+      <td>left/right hand</td>
+      <td>200</td>
+      <td>62</td>
+      <td>4</td>
+      <td>54</td>
+    </tr>
+    <tr>
+      <td>Pan2023</td>
+      <td>left/right hand</td>
+      <td>240</td>
+      <td>28</td>
+      <td>4</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <td>PhysioNet</td>
+      <td>left/right hand</td>
+      <td>40-60</td>
+      <td>64</td>
+      <td>3</td>
+      <td>106</td>
+    </tr>
+    <tr>
+      <td>Shin2017</td>
+      <td>left/right hand</td>
+      <td>60</td>
+      <td>30</td>
+      <td>4</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <td>Yi2014</td>
+      <td>left/right hand</td>
+      <td>160</td>
+      <td>60</td>
+      <td>4</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td><strong>Total:</strong></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><strong>265</strong></td>
+    </tr>
+  </table>
+</div>
 
 ## 许可和署名
 
