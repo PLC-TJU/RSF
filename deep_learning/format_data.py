@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Authors: Pan.LC
+# Author: Pan.LC <coreylin2023@outlook.com>
 # Date: 2024/3/13
 # License: MIT License
 """
