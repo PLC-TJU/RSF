@@ -3,7 +3,6 @@
 # Date: 2024/3/18
 # License: MIT License
 
-# 公共工具库
 import os, time
 import json
 import numpy as np
@@ -12,8 +11,6 @@ import multiprocessing as mp
 from joblib import Parallel, delayed, parallel_backend
 from sklearn.model_selection import RepeatedStratifiedKFold
 from contextlib import redirect_stdout, redirect_stderr
-
-# 私有工具库
 from loaddata import Dataset_Left_Right_MI
 from deep_learning.dl_classifier import DL_Classifier
 from rsf import RSF
