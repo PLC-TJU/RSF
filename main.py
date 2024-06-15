@@ -121,7 +121,7 @@ def main_processes(dataset, personID, allrun):
         remaining_runs = check_completed_runs(results_json_filename, allrun)
         print(f"第{subject}位受试者的剩余计算任务：{len(remaining_runs)}个")
         
-        # 读取数据集
+        # load data
         x, y, _ = paradigm.get_data(dataset, [subject])
         data = x[:, :, :-(x.shape[2] % fs)] if x.shape[2] % fs else x
         _, label = np.unique(y, return_inverse=True)
@@ -151,25 +151,25 @@ def main_processes(dataset, personID, allrun):
             delayed(process_run)(task) for task in all_tasks
         )
 
-#%% 程序初始化设置
+#%% Program initialization settings
 dataset_list = [Cho2017,Lee2019_MI,Pan2023,PhysionetMI,Shin2017A,Weibo2014]
 
-# 定义信号降采样频率
+# Defining the signal downsampling frequency
 fs = 160
 
-# 定义带通滤波器的频率范围(如果执行)
+# Define the frequency range of the bandpass filter
 freqband = [5, 32]
 
-# 定义交叉验证折数和重复次数
+# Define the number of cross-validation folds and repetitions
 nRepeat = 10
 kfold = 10
 seed = 42
 kf = RepeatedStratifiedKFold(n_splits=kfold, n_repeats=nRepeat, random_state=seed)
 
-# 定义滤波器的计算方法
+# Defining Filtering Methods
 methods = ['none','rsf']
 
-# 定义滤波器维度和间隔
+# Defining Filter Dimensions
 min_dim = 2
 max_dim = 22
 step_dim = 2 
@@ -177,40 +177,38 @@ step_dim = 2
 dims = list(range(min_dim,max_dim,step_dim))
 allrun = list(itertools.product(range(nRepeat*kfold), methods, dims))
 
-# 定义分类方法
+# Definition of classification methods
 algorithms = ['EEGNetv4','ShallowFBCSPNet','Deep4Net','oFBCNet','oGraph_CSPNet','LMDANet']
 
-# 定义保存结果文件夹
+# Define a folder for saving results
 floder_name = 'Result_DL'
 if not os.path.exists(floder_name):
     os.makedirs(floder_name)
 
-# 设置计算模式
+# Setting the calculation mode
 device_use = 'cuda' # 'cuda' or 'cpu'
 
-# 设置最大并行进程数
+# Setting the maximum number of parallel processes
 cpu_jobs = 32
 n_jobs = min(int(mp.cpu_count()), 1 if device_use == 'cuda' else cpu_jobs)
 verbose = False if n_jobs > 1 else True
 
-#%% 运行主函数
 if __name__ == '__main__':
     
-    # 定义GPU共享锁和值   
+    # Defining GPU shared locks and values   
     manager = mp.Manager()
     gpu_lock = manager.Lock() 
     
     for dataset_ in dataset_list:
-        # 设置数据集和参数
         paradigm = LeftRightImagery(resample=fs,fmin=freqband[0],fmax=freqband[1],tmin=0,tmax=4) 
         dataset = dataset_()
         subjects = dataset.subject_list
 
-        # 创建结果文件夹
+        # Creating the results folder
         folder_path = os.path.join(floder_name, dataset)
         if not os.path.exists(folder_path):
             os.makedirs(folder_path)
 
-        # 运行主进程
+        # Running the main process
         main_processes(dataset, subjects, allrun)
 
