@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RSF Documentation</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Riemannian Geometry-Based Spatial Filtering (RSF)</h1>
+    <button onclick="showEnglish()">English</button>
+    <button onclick="showChinese()">中文</button>
+
+    <div id="english-content">
+        <h2>Introduction</h2>
+        <p>Riemannian Geometry-Based Spatial Filtering (RSF) is a method based on Riemannian geometry for improving the classification accuracy of motor imagery (MI) and electroencephalography (EEG) signals.</p>
+        <h2>Code Structure</h2>
+        <ul>
+        <li><strong>Lib_develop</strong>: Contains specially modified tool libraries used during our development process.</li>
+        <li><strong>deep_learning</strong>: Contains code related to deep learning models.</li>
+        <li><strong>loaddata</strong>: Contains code for loading and preprocessing data.</li>
+        <li><strong>main.py</strong>: The main execution file used to run the entire project.</li>
+        <li><strong>main_dev.py</strong>: The development version of the main execution file.</li>
+        <li><strong>requirements.txt</strong>: Lists all dependencies required to run the project.</li>
+        <li><strong>rsf.py</strong>: Contains the core code for implementing the RSF method.</li>
+        </ul>
+        <h2>Installation Guide</h2>
+        <p>To install and run the project, please follow these steps:</p>
+        <ol>
+        <li>Clone the repository locally.</li>
+        <li>Install the necessary dependencies by running <code>pip install -r requirements.txt</code>.</li>
+        <li>Run <code>python main.py</code> to start the project.</li>
+        </ol>
+        <h2>Related Research Resources</h2>
+        <p>We express our gratitude to the open-source community, which facilitates the broader dissemination of research by other researchers and ourselves. The coding style in this repository is relatively rough. We welcome anyone to refactor it to make it more efficient. Our model codebase is largely based on the following repositories:</p>
+        <ul>
+        <li><a href="https://github.com/NeuroTechX/moabb"><img src="https://img.shields.io/badge/GitHub-MOABB-b31b1b"></img></a> An open science project aimed at establishing a comprehensive benchmark for BCI algorithms using widely available EEG datasets.</li>
+        <li><a href="https://github.com/TBC-TJU/MetaBCI"><img src="https://img.shields.io/badge/GitHub-MetaBCI-b31b1b"></img></a> An open-source non-invasive brain-computer interface platform.</li>
+        <li><a href="https://github.com/pyRiemann/pyRiemann"><img src="https://img.shields.io/badge/GitHub-pyRiemann-b31b1b"></img></a> A Python library focused on Riemannian geometry methods for EEG signal classification. pyRiemann provides a suite of tools for processing and classifying EEG signals in Riemannian space.</li>
+        <li><a href="https://github.com/ravikiran-mane/FBCNet"><img src="https://img.shields.io/badge/GitHub-FBCNet-b31b1b"></img></a> A convolutional neural network based on filter banks for EEG signal classification. FBCNet combines traditional band-pass feature extraction with deep learning to improve classification performance.</li>
+        <li><a href="https://github.com/braindecode/braindecode"><img src="https://img.shields.io/badge/GitHub-Braindecode-b31b1b"></img></a> Contains several deep learning models such as EEGNet, ShallowConvNet, and DeepConvNet, designed specifically for EEG signal classification. Braindecode aims to provide an easy-to-use deep learning toolbox.</li>
+        <li><a href="https://github.com/GeometricBCI/Tensor-CSPNet-and-Graph-CSPNet"><img src="https://img.shields.io/badge/GitHub-CSPNet-b31b1b"></img></a> Contains Tensor-CSPNet and Graph-CSPNet, two deep learning models for MI-EEG signal classification.</li>
+        <li><a href="https://github.com/MiaoZhengQing/LMDA-Code"><img src="https://img.shields.io/badge/GitHub-LMDANet-b31b1b"></img></a> A deep learning-based network for EEG signal classification. LMDA-Net combines various advanced neural network architectures to enhance classification accuracy.</li>
+        </ul>
+        <h2>Data Availability</h2>
+        <p>We used the following public datasets:</p>
+        <ul>
+        <li><a href="https://doi.org/10.7910/DVN/O5CQFA"><img src="https://img.shields.io/badge/DOI-Pan2023-blue"></img></a> Provides cross-session left/right hand MI-EEG data from 14 subjects. </li>
+        <li><a href="http://gigadb.org/dataset/100295"><img src="https://img.shields.io/badge/DOI-Cho2017-green"></img></a> Provides left/right hand MI-EEG data from 52 subjects. </li>
+        <li><a href="https://doi.org/10.1093/gigascience/giz002"><img src="https://img.shields.io/badge/DOI-Lee2019-orange"></img></a> Provides left/right hand MI-EEG data from 54 subjects. </li>
+        <li><a href="https://www.physionet.org/content/eegmmidb/1.0.0/"><img src="https://img.shields.io/badge/DOI-Physionet-red"></img></a> Provides left/right hand MI-EEG data from 106/109 subjects. </li>
+        <li><a href="http://doc.ml.tu-berlin.de/hBCI"><img src="https://img.shields.io/badge/DOI-Shin2017-purple"></img></a> Provides left/right hand MI-EEG data from 29 subjects. </li>
+        <li><a href="https://doi.org/10.7910/DVN/27306"><img src="https://img.shields.io/badge/DOI-Yi2014-yellow"></img></a> Provides seven-class MI-EEG data from 10 subjects.</li>
+        </ul>
+        <p><strong>Table 1</strong> Details of all public datasets</p>
+        <table>
+        <thead>
+        <tr>
+        <th align="left">Dataset</th>
+        <th align="center">Classes</th>
+        <th align="center">Trials</th>
+        <th align="center">Channels</th>
+        <th align="center">Duration (s)</th>
+        <th align="center">Subjects</th>
+        </tr>
+        </thead>
+        <tbody><tr>
+        <td align="left"><a href="https://doi.org/10.1093/gigascience/gix034">Cho2017</a></td>
+        <td align="center">left/right hand</td>
+        <td align="center">200</td>
+        <td align="center">64</td>
+        <td align="center">3</td>
+        <td align="center">52</td>
+        </tr>
+        <tr>
+        <td align="left"><a href="https://doi.org/10.1093/gigascience/giz002">Lee2019</a></td>
+        <td align="center">left/right hand</td>
+        <td align="center">200</td>
+        <td align="center">62</td>
+        <td align="center">4</td>
+        <td align="center">54</td>
+        </tr>
+        <tr>
+        <td align="left"><a href="https://doi.org/10.1088/1741-2552/ad0a01">Pan2023</a></td>
+        <td align="center">left/right hand</td>
+        <td align="center">240</td>
+        <td align="center">28</td>
+        <td align="center">4</td>
+        <td align="center">14</td>
+        </tr>
+        <tr>
+        <td align="left"><a href="https://doi.org/10.1109/TBME.2004.827072">PhysioNet</a></td>
+        <td align="center">left/right hand</td>
+        <td align="center">40-60</td>
+        <td align="center">64</td>
+        <td align="center">3</td>
+        <td align="center">106</td>
+        </tr>
+        <tr>
+        <td align="left"><a href="https://doi.org/10.1109/TNSRE.2016.2628057">Shin2017</a></td>
+        <td align="center">left/right hand</td>
+        <td align="center">60</td>
+        <td align="center">30</td>
+        <td align="center">4</td>
+        <td align="center">29</td>
+        </tr>
+        <tr>
+        <td align="left"><a href="https://doi.org/10.1371/journal.pone.0114853">Yi2014</a></td>
+        <td align="center">left/right hand</td>
+        <td align="center">160</td>
+        <td align="center">60</td>
+        <td align="center">4</td>
+        <td align="center">10</td>
+        </tr>
+        <tr>
+        <td align="left"><strong>Total:</strong></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"><strong>265</strong></td>
+        </tr>
+        </tbody></table>
+        <h2>License and Attribution</h2>
+        <p>© 2024. All rights reserved.
+        Please refer to the <a href="./LICENSE">LICENSE</a> file for details on the licensing of our code.</p>
+    
+    </div>
+    
+    <div id="chinese-content" class="hidden">
+        <h2>简介</h2>
+        <p>基于黎曼几何的空间滤波 (RSF) 是一种基于黎曼几何的方法，用于提高运动想象 (MI) 和脑电图 (EEG) 信号分类的准确性。</p>
+        <h2>代码结构</h2>
+        <ul>
+        <li><strong>Lib_develop</strong>: 包含我们开发过程中使用过的经过特殊修改的工具库。</li>
+        <li><strong>deep_learning</strong>: 包含深度学习模型相关的代码。</li>
+        <li><strong>loaddata</strong>: 包含加载和预处理数据的代码。</li>
+        <li><strong>main.py</strong>: 主执行文件，用于运行整个项目。</li>
+        <li><strong>main_dev.py</strong>: 开发版本的主执行文件。</li>
+        <li><strong>requirements.txt</strong>: 列出项目运行所需的所有依赖项。</li>
+        <li><strong>rsf.py</strong>: 包含实现RSF方法的核心代码。</li>
+        </ul>
+        <h2>安装指南</h2>
+        <p>要安装和运行该项目，请按照以下步骤操作：</p>
+        <ol>
+        <li>克隆仓库到本地。</li>
+        <li>通过运行 <code>pip install -r requirements.txt</code> 安装必要的依赖项。</li>
+        <li>运行 <code>python main.py</code> 启动项目。</li>
+        </ol>
+        <h2>相关研究资源</h2>
+        <p>我们对开源社区表示感谢，它为更广泛地传播研究成果提供了便利。本仓库中的代码风格相对粗糙，欢迎任何人对其进行重构以提高效率。我们的模型代码库在很大程度上基于以下资源库：</p>
+        <ul>
+        <li><a href="https://github.com/NeuroTechX/moabb"><img src="https://img.shields.io/badge/GitHub-MOABB-b31b1b"></img></a> 这是一个开放科学项目，旨在建立一个包含广泛可用的EEG数据集的BCI算法的全面基准测试。</li>
+        <li><a href="https://github.com/TBC-TJU/MetaBCI"><img src="https://img.shields.io/badge/GitHub-MetaBCI-b31b1b"></img></a> 一个开源的非侵入式脑计算机接口平台。</li>
+        <li><a href="https://github.com/pyRiemann/pyRiemann"><img src="https://img.shields.io/badge/GitHub-pyRiemann-b31b1b"></img></a> 一个专注于黎曼几何方法的Python库，用于EEG信号分类。pyRiemann提供了一系列工具，用于处理和分类黎曼空间中的EEG信号。</li>
+        <li><a href="https://github.com/ravikiran-mane/FBCNet"><img src="https://img.shields.io/badge/GitHub-FBCNet-b31b1b"></img></a> 一个基于滤波器组的卷积神经网络，用于EEG信号分类。FBCNet结合了传统的频带特征提取和深度学习，以提高分类性能。</li>
+        <li><a href="https://github.com/braindecode/braindecode"><img src="https://img.shields.io/badge/GitHub-Braindecode-b31b1b"></img></a> 包含EEGNet、ShallowConvNet和DeepConvNet等多个深度学习模型，这些模型专为EEG信号分类设计。Braindecode旨在提供一个易于使用的深度学习工具箱。</li>
+        <li><a href="https://github.com/GeometricBCI/Tensor-CSPNet-and-Graph-CSPNet"><img src="https://img.shields.io/badge/GitHub-CSPNet-b31b1b"></img></a> 包含Tensor-CSPNet和Graph-CSPNet两个深度学习模型，用于MI-EEG信号分类。</li>
+        <li><a href="https://github.com/MiaoZhengQing/LMDA-Code"><img src="https://img.shields.io/badge/GitHub-LMDANet-b31b1b"></img></a> 一个基于深度学习的EEG信号分类网络。</li>
+        </ul>
+        <h2>数据可用性</h2>
+        <p>我们使用了以下公开数据集：</p>
+        <ul>
+        <li><a href="https://doi.org/10.7910/DVN/O5CQFA"><img src="https://img.shields.io/badge/DOI-Pan2023-blue"></img></a> 提供了14名受试者跨会话的左/右手MI-EEG数据。</li>
+        <li><a href="http://gigadb.org/dataset/100295"><img src="https://img.shields.io/badge/DOI-Cho2017-green"></img></a> 提供了52名受试者的左/右手MI-EEG数据。</li>
+        <li><a href="https://doi.org/10.1093/gigascience/giz002"><img src="https://img.shields.io/badge/DOI-Lee2019-orange"></img></a> 提供了54名受试者的左/右手MI-EEG数据。</li>
+        <li><a href="https://www.physionet.org/content/eegmmidb/1.0.0/"><img src="https://img.shields.io/badge/DOI-Physionet-red"></img></a> 提供了106/109名受试者的左/右手MI-EEG数据。</li>
+        <li><a href="http://doc.ml.tu-berlin.de/hBCI"><img src="https://img.shields.io/badge/DOI-Shin2017-purple"></img></a> 提供了29名受试者的左/右手MI-EEG数据。</li>
+        <li><a href="https://doi.org/10.7910/DVN/27306"><img src="https://img.shields.io/badge/DOI-Yi2014-yellow"></img></a> 提供了10名受试者的七种类别的MI-EEG数据。</li>
+        </ul>
+        <p><strong>Table 1</strong> Details of all public datasets</p>
+        <table>
+        <thead>
+        <tr>
+        <th align="left">Dataset</th>
+        <th align="center">Classes</th>
+        <th align="center">Trials</th>
+        <th align="center">Channels</th>
+        <th align="center">Duration (s)</th>
+        <th align="center">Subjects</th>
+        </tr>
+        </thead>
+        <tbody><tr>
+        <td align="left"><a href="https://doi.org/10.1093/gigascience/gix034">Cho2017</a></td>
+        <td align="center">left/right hand</td>
+        <td align="center">200</td>
+        <td align="center">64</td>
+        <td align="center">3</td>
+        <td align="center">52</td>
+        </tr>
+        <tr>
+        <td align="left"><a href="https://doi.org/10.1093/gigascience/giz002">Lee2019</a></td>
+        <td align="center">left/right hand</td>
+        <td align="center">200</td>
+        <td align="center">62</td>
+        <td align="center">4</td>
+        <td align="center">54</td>
+        </tr>
+        <tr>
+        <td align="left"><a href="https://doi.org/10.1088/1741-2552/ad0a01">Pan2023</a></td>
+        <td align="center">left/right hand</td>
+        <td align="center">240</td>
+        <td align="center">28</td>
+        <td align="center">4</td>
+        <td align="center">14</td>
+        </tr>
+        <tr>
+        <td align="left"><a href="https://doi.org/10.1109/TBME.2004.827072">PhysioNet</a></td>
+        <td align="center">left/right hand</td>
+        <td align="center">40-60</td>
+        <td align="center">64</td>
+        <td align="center">3</td>
+        <td align="center">106</td>
+        </tr>
+        <tr>
+        <td align="left"><a href="https://doi.org/10.1109/TNSRE.2016.2628057">Shin2017</a></td>
+        <td align="center">left/right hand</td>
+        <td align="center">60</td>
+        <td align="center">30</td>
+        <td align="center">4</td>
+        <td align="center">29</td>
+        </tr>
+        <tr>
+        <td align="left"><a href="https://doi.org/10.1371/journal.pone.0114853">Yi2014</a></td>
+        <td align="center">left/right hand</td>
+        <td align="center">160</td>
+        <td align="center">60</td>
+        <td align="center">4</td>
+        <td align="center">10</td>
+        </tr>
+        <tr>
+        <td align="left"><strong>Total:</strong></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"><strong>265</strong></td>
+        </tr>
+        </tbody></table>
+        <h2>许可和署名</h2>
+        <p>版权 © 2024 年。保留所有权利。
+        请参阅 <a href="./LICENSE">LICENSE</a> 文件，了解我们代码的许可情况。</p>
+    
+    </div>
+    
+    <script>
+        function showEnglish() {
+            document.getElementById('english-content').classList.remove('hidden');
+            document.getElementById('chinese-content').classList.add('hidden');
+        }
+    
+        function showChinese() {
+            document.getElementById('english-content').classList.add('hidden');
+            document.getElementById('chinese-content').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
