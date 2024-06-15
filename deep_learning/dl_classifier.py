@@ -104,7 +104,7 @@ from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.metrics import accuracy_score
 from sklearn.pipeline import make_pipeline
 from . import (EEGNet, ShallowNet, DeepNet,         
-               EEGNetv4, ShallowFBCSPNet, Deep4Net,  #推荐使用这三种EEGNet, ShallowNet, DeepNet
+               EEGNetv4, ShallowFBCSPNet, Deep4Net,
                FBCNet, Tensor_CSPNet, Graph_CSPNet, 
                LMDANet)
 from .format_data import Formatdata
@@ -112,8 +112,6 @@ from .format_data import Formatdata
 
 def check_nn(est):
     """Check if a given estimator is valid."""
-
-    # Check estimator exist and return the correct function
     estimators = {
         'EEGNet': EEGNet,
         'EEGNetv4': EEGNetv4,
@@ -131,13 +129,10 @@ def check_nn(est):
     }
 
     if callable(est):
-        # All good (cross your fingers)
         pass
     elif est in estimators.keys():
-        # Map the corresponding estimator
         est = estimators[est]
     else:
-        # raise an error
         raise ValueError(
             """%s is not an valid estimator ! Valid estimators are : %s or a
             callable function""" % (est, (' , ').join(estimators.keys())))
@@ -158,10 +153,10 @@ class DL_Classifier(BaseEstimator, ClassifierMixin):
         self.Process = None
         self.Net = None
         self.Model = None
-        self.rsf_method = kwargs.get('rsf_method', 'none')  # Provide a default value if key is not present
+        self.rsf_method = kwargs.get('rsf_method', 'none') 
         self.rsf_dim = kwargs.get('rsf_dim', 4)
         self.freqband = kwargs.get('freqband', None)
-        self.dtype = kwargs.get('dtype', 'float32') # 默认使用float32, 也可以使用float64
+        self.dtype = kwargs.get('dtype', 'float32')
         self.seed = kwargs.get('seed', 42)
         self.patience = kwargs.get('patience', 50)
         self.net_params = {
@@ -177,18 +172,15 @@ class DL_Classifier(BaseEstimator, ClassifierMixin):
 
     def fit(self, X, y):
         X = X.copy()
-        # 提取实际的模型名称
         self.pp_name = self.model_name.split('-')[0] if '-' in self.model_name else 'None'
         self.nn_name = self.model_name.split('-')[-1] if '-' in self.model_name else self.model_name
         
-        # 转换数据
         Process = None
         if self.pp_name.lower() == 'rsf' or self.nn_name in ['Graph_CSPNet', 'Tensor_CSPNet', 'FBCNet']: # 原代码中没有加rsf
             Process = Formatdata(fs=self.fs, n_times=X.shape[2], alg_name=self.nn_name, dtype=self.dtype,   
                                  rsf_method=self.rsf_method, rsf_dim=self.rsf_dim, freqband=self.freqband)
             X = Process.fit_transform(X, y)
         
-        # 实例化深度学习模型
         Network = check_nn(self.nn_name)
         if self.nn_name in ['Graph_CSPNet']:
             graph_M = Process.graph_M.to(self.device)
@@ -201,10 +193,9 @@ class DL_Classifier(BaseEstimator, ClassifierMixin):
         else:
             Net = Network(X.shape[1], X.shape[2], n_classes = self.n_classes, net_params=self.net_params)
         
-        # 训练深度学习模型
+
         Net.fit(X.astype(self.dtype).copy(), y.astype('int64').copy())
         
-        # 保存模型和预处理器
         self.Process = Process
         self.Net = Net
         self.Model = make_pipeline(Process, Net) if Process is not None else Net
@@ -212,7 +203,6 @@ class DL_Classifier(BaseEstimator, ClassifierMixin):
         return self
 
     def predict(self, X):
-        # 确保模型已经训练
         if hasattr(self, 'Model'):
             predictions = self.Model.predict(X.astype(self.dtype).copy())
         else:
@@ -220,11 +210,8 @@ class DL_Classifier(BaseEstimator, ClassifierMixin):
         return predictions
 
     def score(self, X, y):
-        # 确保模型已经训练
         if hasattr(self, 'Model'):
-            # 使用模型进行预测
             y_pred = self.predict(X)
-            # 计算并返回准确率
             return accuracy_score(y.astype('int64'), y_pred)
         else:
             raise ValueError("Model is not trained yet. Please call 'fit' with appropriate arguments before calling 'score'.")
