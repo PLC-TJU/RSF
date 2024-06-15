@@ -1,6 +1,6 @@
 # Riemannian Geometry-Based Spatial Filtering (RSF)
 
-[English Version](./README.en.md)
+[English Version](./README.md)
 
 ## 简介
 
