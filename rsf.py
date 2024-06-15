@@ -18,7 +18,7 @@ def optimizeRiemann_old(P1, P2, W0=None, N=8, maxiter=5000,):
     
     if W0 is None:
         W0 = np.random.randn(M, N)
-        W0 = np.linalg.qr(W0)[0]  # Orthogonalize W0
+        W0 = np.linalg.qr(W0)[0]
     else:
         N = W0.shape[1]
     
@@ -220,115 +220,5 @@ class RSF(BaseEstimator, TransformerMixin):
         return transformed_data
 
     
-# import pymanopt
-# from pymanopt.manifolds import Stiefel
-# from pymanopt.manifolds import SymmetricPositiveDefinite as SPD
-# from pymanopt import Problem
-# import pymanopt.optimizers
-# import autograd.numpy as anp
-# def optimizeRiemann2x(P1, P2, W0=None, N=8, maxiter=5000, **kwargs):
-    
-#     M = P1.shape[0]
-    
-#     #Ensure the input data is valid
-#     if P1.shape[0] != P2.shape[0] or P1.shape[1] != P2.shape[1]:
-#         raise ValueError("The input data must have the same number of samples")
-#     if P1.shape[0] < N:
-#         raise ValueError("The number of samples is less than the number of filters")    
-
-#     if W0 is not None:
-#         N = W0.shape[1]
-        
-#     # 定义流形
-#     manifold = Stiefel(M, N)
-    
-#     # 定义目标函数
-#     @pymanopt.function.autograd(manifold)
-#     def cost(W):
-#         # 计算特征值并确保它们是正的
-
-#         # eigvals, _ = anp.linalg.eig(W.T @ P1 @ W, W.T @ P2 @ W)
-#         A = W.T @ P1 @ W
-#         B = W.T @ P2 @ W
-#         # eigvals, _ = anp.linalg.eig(anp.linalg.inv(B) @ A)
-#         eigvals, _ = eigh(A, B)
-        
-#         # 确保特征值大于1e-10
-#         # eigvals = np.clip(eigvals, a_min=1e-10, a_max=None)  # Avoid log(0) issues
-#         # 计算成本
-#         return -np.sum(np.log(eigvals)**2)
-
-#     # 定义问题
-#     problem = Problem(manifold=manifold, cost=cost)
-
-#     # 选择优化器并优化
-#     # optimizer = pymanopt.optimizers.SteepestDescent(max_iterations=maxiter)
-#     optimizer = pymanopt.optimizers.TrustRegions(max_iterations=maxiter)
-#     result = optimizer.run(problem, initial_point=W0)
-#     W_opt = result.point
-
-#     return W_opt
-
-
-# from pymanopt.tools.multi import (
-#     multiexpm,
-#     multihconj,
-#     multilogm,
-# )
-# def optimizeRiemann2(P1, P2, W0=None, N=8, maxiter=5000, **kwargs):
-    
-#     def dist(point_a, point_b):
-        
-#         c = np.linalg.cholesky(point_a)
-#         c_inv = np.linalg.inv(c)
-#         logm = multilogm(
-#             c_inv @ point_b @ multihconj(c_inv),
-#             positive_definite=True,
-#         )
-#         return np.real(np.linalg.norm(logm))
-    
-#     def extract_value(W):
-#         # 检测 W 是否有 _value 属性，如果有，则将 W 设置为 W._value
-#         while hasattr(W, '_value'):
-#             W = W._value
-#         # 返回 W 的真实数据值
-#         return W
-    
-#     M = P1.shape[0]
-    
-#     #Ensure the input data is valid
-#     if P1.shape[0] != P2.shape[0] or P1.shape[1] != P2.shape[1]:
-#         raise ValueError("The input data must have the same number of samples")
-#     if P1.shape[0] < N:
-#         raise ValueError("The number of samples is less than the number of filters")    
-
-#     if W0 is not None:
-#         N = W0.shape[1]
-        
-#     # 定义流形
-#     manifold = Stiefel(M, N)
-#     # manifold = SPD(N)
-    
-#     # 定义目标函数
-#     @pymanopt.function.autograd(manifold)
-#     def cost(W):
-#         W = extract_value(W)
-        
-#         A = W.T @ P1 @ W
-#         B = W.T @ P2 @ W
-
-#         # 计算成本
-#         return -dist(A, B)
-
-#     # 定义问题
-#     problem = Problem(manifold=manifold, cost=cost)
-
-#     # 选择优化器并优化
-#     # optimizer = pymanopt.optimizers.SteepestDescent(max_iterations=maxiter)
-#     optimizer = pymanopt.optimizers.TrustRegions(max_iterations=maxiter)
-#     result = optimizer.run(problem, initial_point=W0)
-#     W_opt = result.point
-
-#     return W_opt
 
         
