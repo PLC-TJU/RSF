@@ -23,7 +23,6 @@ from loaddata import Dataset_Left_Right_MI
 from deep_learning.dl_classifier import DL_Classifier
 from rsf import RSF
 
-# 计算单个任务的函数
 def calc_acc(irun, traindata, trainlabel, testdata, testlabel, verbose = True, device = 'cuda'):
     method = irun[1]
     dim = irun[2]
@@ -40,12 +39,9 @@ def calc_acc(irun, traindata, trainlabel, testdata, testlabel, verbose = True, d
     testdata = rsf_transformer.transform(testdata)
     transform_time = time.monotonic() - start_time
     
-    # 训练模型并测试
     for model_name in algorithms:
         
-        # 训练模型并测试
         if not verbose:
-            # 这行代码用于隐藏程序执行过程中的输出显示
             with open(os.devnull, 'w') as fnull, redirect_stdout(fnull), redirect_stderr(fnull):
                 testacc, elapsed_time = train_and_evaluate(traindata, trainlabel, testdata, testlabel, 
                                                            model_name, device, irun=irun)
@@ -53,13 +49,11 @@ def calc_acc(irun, traindata, trainlabel, testdata, testlabel, verbose = True, d
             testacc, elapsed_time = train_and_evaluate(traindata, trainlabel, testdata, testlabel, 
                                                        model_name, device, irun=irun)
         
-        # 记录结果
         Acc.append(testacc)
         Timecost.append(elapsed_time + transform_time)
               
     return Acc, Timecost
 
-# 训练模型并测试的函数
 def train_and_evaluate(traindata, trainlabel, testdata, testlabel, 
                        model_name, device, rsf_method='none', rsf_dim=2,
                        irun=[0, 'none', 2]):
@@ -73,36 +67,29 @@ def train_and_evaluate(traindata, trainlabel, testdata, testlabel,
     except Exception as e:
         testacc = float('nan')
         elapsed_time = float('nan')
-        #将错误信息保存到文件
         with open(os.path.join(floder_name, 'error_{}.txt'.format(dataset_name)), 'w') as f:
-            # 加上时间戳
             f.write(f"Time: {time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))}\n")
-            # 将错误信息写入文件
             f.write(f"Error in {model_name} with {rsf_method} and {rsf_dim} on run {irun[0]}: {e}\n")
     return testacc, elapsed_time
 
-# 保存单个计算结果的函数
 def save_result(irun, result, filename):
-    # 将结果转换为字典并保存为JSON格式
     result_dict = {'run': irun[0], 'method': irun[1], 'dim': irun[2], 'Acc': result[0], 'Timecost': result[1]}
     try:
         with gpu_lock:
             with open(filename, 'a') as f:
                 json.dump(result_dict, f)
-                f.write('\n')  # 换行，以便于读取时分割
+                f.write('\n') 
     except:
         with open(filename, 'a') as f:
                 json.dump(result_dict, f)
-                f.write('\n')  # 换行，以便于读取时分割
+                f.write('\n') 
 
-# 检查已完成的计算并返回未完成的计算列表
 def check_completed_runs(filename, allrun):
     if not os.path.exists(filename):
         return allrun
     completed_runs = []
     with open(filename, 'r') as f:
         lines = f.readlines()
-    # 检查文件是否包含子标题部分
     results_start = lines.index("results:\n") + 1 if "results:\n" in lines else 0
     for line in lines[results_start:]:
         if line.strip():
@@ -110,16 +97,13 @@ def check_completed_runs(filename, allrun):
     completed_indices = [(run['run'], run['method'], run['dim']) for run in completed_runs]
     return [irun for irun in allrun if (irun[0], irun[1], irun[2]) not in completed_indices]
          
-# 划分数据集
 def split_data_for_cv(data, label):
     all_data = {}
     all_indices = {}
     for cv, (train_index, test_index) in enumerate(kf.split(data, label)):
-        # 保存训练集和测试集的索引
         all_indices[cv] = {}
         all_indices[cv]['train_index'] = train_index
         all_indices[cv]['test_index'] = test_index
-        # 保存训练集和测试集的数据
         all_data[cv] = {}
         all_data[cv]['traindata'] = data[train_index]
         all_data[cv]['trainlabel'] = label[train_index]
@@ -127,16 +111,13 @@ def split_data_for_cv(data, label):
         all_data[cv]['testlabel'] = label[test_index]  
     return all_data, all_indices
 
-# 主函数
 def main_processes(dataset, personID, allrun):
     
     all_tasks = []
     for subject in personID:
         
-        # 设置中间计算结果JSON文件名
         results_json_filename = os.path.join(folder_path, 'result' + f"_{subject:03d}.json")
         
-        # 检查剩余的计算任务
         remaining_runs = check_completed_runs(results_json_filename, allrun)
         print(f"第{subject}位受试者的剩余计算任务：{len(remaining_runs)}个")
         
@@ -145,11 +126,8 @@ def main_processes(dataset, personID, allrun):
         data = x[:, :, :-(x.shape[2] % fs)] if x.shape[2] % fs else x
         _, label = np.unique(y, return_inverse=True)
         
-        # 划分数据集
         all_data_list, _= split_data_for_cv(data, label)
               
-        # 执行剩余的计算   
-        # 使用 parallel_backend 设置并行计算的后端
         def process_run(irun):
             result = calc_acc(
                 irun, 
@@ -167,8 +145,6 @@ def main_processes(dataset, personID, allrun):
                 delayed(process_run)(irun) for irun in remaining_runs
             )
     
-    # 执行剩余的计算   
-    # 使用 parallel_backend 设置并行计算的后端，'loky'为多进程，'multiprocessing'为多线程
     print(f"一共有 {len(all_tasks)} 个计算任务。")
     with parallel_backend('loky', n_jobs=n_jobs):
         Parallel(batch_size=1, verbose=len(all_tasks))( # type: ignore
