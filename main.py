@@ -117,15 +117,12 @@ def main_processes(dataset, personID, allrun):
     for subject in personID:
         
         results_json_filename = os.path.join(folder_path, 'result' + f"_{subject:03d}.json")
-        
         remaining_runs = check_completed_runs(results_json_filename, allrun)
-        print(f"第{subject}位受试者的剩余计算任务：{len(remaining_runs)}个")
         
         # load data
         x, y, _ = paradigm.get_data(dataset, [subject])
         data = x[:, :, :-(x.shape[2] % fs)] if x.shape[2] % fs else x
         _, label = np.unique(y, return_inverse=True)
-        
         all_data_list, _= split_data_for_cv(data, label)
               
         def process_run(irun):
