@@ -43,7 +43,7 @@
 - [<img src="https://img.shields.io/badge/DOI-Pan2023-blue"></img>](https://doi.org/10.7910/DVN/O5CQFA) 提供了14名受试者跨会话的左/右手MI-EEG数据。
 - [<img src="https://img.shields.io/badge/DOI-Cho2017-green"></img>](http://gigadb.org/dataset/100295) 提供了52名受试者的左/右手MI-EEG数据。
 - [<img src="https://img.shields.io/badge/DOI-Lee2019-orange"></img>](https://doi.org/10.1093/gigascience/giz002) 提供了54名受试者的左/右手MI-EEG数据。
-- [<img src="https://img.shields.io/badge/DOI-Physionet-red"></img>](https://www.physionet.org/content/eegmmidb/1.0.0/) 提供了106/109名受试者的左/右手MI-EEG数据。
+- [<img src="https://img.shields.io/badge/DOI-PhysioNet-red"></img>](https://www.physionet.org/content/eegmmidb/1.0.0/) 提供了106/109名受试者的左/右手MI-EEG数据。
 - [<img src="https://img.shields.io/badge/DOI-Shin2017-purple"></img>](http://doc.ml.tu-berlin.de/hBCI) 提供了29名受试者的左/右手MI-EEG数据。
 - [<img src="https://img.shields.io/badge/DOI-Yi2014-yellow"></img>](https://doi.org/10.7910/DVN/27306) 提供了10名受试者的七种类别的MI-EEG数据。
 
