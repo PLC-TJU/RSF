@@ -43,7 +43,7 @@ We used the following public datasets:
 - [<img src="https://img.shields.io/badge/DOI-Pan2023-blue"></img>](https://doi.org/10.7910/DVN/O5CQFA) Provides cross-session left/right hand MI-EEG data from 14 subjects. 
 - [<img src="https://img.shields.io/badge/DOI-Cho2017-green"></img>](http://gigadb.org/dataset/100295) Provides left/right hand MI-EEG data from 52 subjects. 
 - [<img src="https://img.shields.io/badge/DOI-Lee2019-orange"></img>](https://doi.org/10.1093/gigascience/giz002) Provides left/right hand MI-EEG data from 54 subjects. 
-- [<img src="https://img.shields.io/badge/DOI-Physionet-red"></img>](https://www.physionet.org/content/eegmmidb/1.0.0/) Provides left/right hand MI-EEG data from 106/109 subjects. 
+- [<img src="https://img.shields.io/badge/DOI-PhysioNet-red"></img>](https://www.physionet.org/content/eegmmidb/1.0.0/) Provides left/right hand MI-EEG data from 106/109 subjects. 
 - [<img src="https://img.shields.io/badge/DOI-Shin2017-purple"></img>](http://doc.ml.tu-berlin.de/hBCI) Provides left/right hand MI-EEG data from 29 subjects. 
 - [<img src="https://img.shields.io/badge/DOI-Yi2014-yellow"></img>](https://doi.org/10.7910/DVN/27306) Provides seven-class MI-EEG data from 10 subjects. 
 
