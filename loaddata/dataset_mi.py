@@ -1,7 +1,6 @@
 # This file is used to load the dataset and preprocess the data. 
-# Author: Pan.LC <coreylin2023@outlook.com>
+# Authors: Pan.LC <panlincong@tju.edu.cn>
 # Date: 2024/4/7
-# License: MIT License
 
 # Pan et al. 对moabb库进行了一些可有可无的调整,用于灵活的修改数据集的保存地址,但这是不必要的。
 # 可以使用原版moabb库和pan2023.py文件中的函数来加载Pan2023数据集。
@@ -122,21 +121,21 @@ class Dataset_MI:
     def __init__(self, dataset_name: str, fs=None, **kwargs):
         # 定义数据集和对应的采样频率、通道数
         datasets = {
-            "BNCI2014_001": (BNCI2014_001, 250, 22),
-            "BNCI2014_002": (BNCI2014_002, 512, 15),
-            "BNCI2014_004": (BNCI2014_004, 250, 3),
-            "BNCI2015_001": (BNCI2015_001, 512, 13),
-            "BNCI2015_004": (BNCI2015_004, 256, 30),
-            "AlexMI": (AlexMI, 160, 16),
-            "Cho2017": (Cho2017, 512, 64),
-            "GrosseWentrup2009": (GrosseWentrup2009, 500, 128),
-            "Lee2019_MI": (Lee2019_MI, 1000, 62),
-            "PhysionetMI": (PhysionetMI, 160, 64),
-            "Schirrmeister2017": (Schirrmeister2017, 500, 128),
-            "Shin2017A": (Shin2017A, 200, 30),
-            "Weibo2014": (Weibo2014, 200, 60),
-            "Zhou2016": (Zhou2016, 250, 14),
-            'Pan2023': (Pan2023, 250, 28),
+            "BNCI2014_001": (BNCI2014_001, 250, 22, 4),
+            "BNCI2014_002": (BNCI2014_002, 512, 15, 5),
+            "BNCI2014_004": (BNCI2014_004, 250, 3, 4.5),
+            "BNCI2015_001": (BNCI2015_001, 512, 13, 5),
+            "BNCI2015_004": (BNCI2015_004, 256, 30, 7),
+            "AlexMI": (AlexMI, 512, 16, 3),
+            "Cho2017": (Cho2017, 512, 64, 3),
+            "GrosseWentrup2009": (GrosseWentrup2009, 500, 128, 7),
+            "Lee2019_MI": (Lee2019_MI, 1000, 62, 4),
+            "PhysionetMI": (PhysionetMI, 160, 64, 3),
+            "Schirrmeister2017": (Schirrmeister2017, 500, 128, 4),
+            "Shin2017A": (Shin2017A, 200, 30, 10),
+            "Weibo2014": (Weibo2014, 200, 60, 4),
+            "Zhou2016": (Zhou2016, 250, 14, 5),
+            'Pan2023': (Pan2023, 250, 28, 4),
         }
 
         # 检查数据集名称是否有效
@@ -145,12 +144,19 @@ class Dataset_MI:
         
         # 实例化数据集并获取采样频率
         path = kwargs.pop('path', None)
-        dataset_class, srate, ch_num = datasets[dataset_name]
+        dataset_class, srate, ch_num, time_length = datasets[dataset_name]
         self.dataset = dataset_class(path=path) if dataset_name != 'Shin2017A' else dataset_class(accept=True, path=path)
         self.fs = fs if fs is not None else srate
+        tmax = kwargs.pop('tmax', time_length)
+        kwargs['tmax'] = np.min([tmax, time_length])
         self.paradigm = MotorImagery(resample=self.fs, **kwargs) # 降采样频率为160Hz
         self.subject_list = self.dataset.subject_list
         self.n_channels = ch_num
+        self.time_length = time_length
+        
+        if dataset_name == 'PhysionetMI':
+            # 由于PhysionetMI数据集的88, 92, 100等三个编号的subject的数据存在问题，因此需要将其剔除
+            self.subject_list = [x for x in self.subject_list if x not in [88, 92, 100]]
     
     def get_data(self, subjects: list[int]):
         # 检查subjects是否完全属于subject_list
