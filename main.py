@@ -142,7 +142,6 @@ def main_processes(dataset, personID, allrun):
                 delayed(process_run)(irun) for irun in remaining_runs
             )
     
-    print(f"一共有 {len(all_tasks)} 个计算任务。")
     with parallel_backend('loky', n_jobs=n_jobs):
         Parallel(batch_size=1, verbose=len(all_tasks))( # type: ignore
             delayed(process_run)(task) for task in all_tasks
