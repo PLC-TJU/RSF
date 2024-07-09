@@ -145,7 +145,7 @@ class RSF(BaseEstimator, TransformerMixin):
         - flag (bool, optional): Whether to collect objective function values during optimization (default: False).
         """
         self.dim = dim
-        self.method = method.lower() if method is not None else 'none'
+        self.method = method
         self.flag = flag
         self.solver = solver
         self.W = None
