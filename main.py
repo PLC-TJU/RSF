@@ -19,7 +19,6 @@ from moabb.datasets import (Cho2017,
                             Lee2019_MI,
                             Shin2017A,)
 from loaddata.pan2023 import Pan2023
-from loaddata import Dataset_Left_Right_MI
 from deep_learning.dl_classifier import DL_Classifier
 from rsf import RSF
 
@@ -27,6 +26,7 @@ def calc_acc(irun, traindata, trainlabel, testdata, testlabel, verbose = True, d
     method = irun[1]
     dim = irun[2]
     
+    # Classification performance of the baseline method is independent of the filter dimension
     if method.lower() == 'none' and dim > 2:
         return [float('nan')] * len(algorithms), [float('nan')] * len(algorithms)
     
@@ -148,7 +148,7 @@ def main_processes(dataset, personID, allrun):
         )
 
 #%% Program initialization settings
-dataset_list = [Cho2017,Lee2019_MI,Pan2023,PhysionetMI,Shin2017A,Weibo2014]
+dataset_list = [Cho2017, Lee2019_MI, Pan2023, PhysionetMI, Shin2017A, Weibo2014]
 
 # Defining the signal downsampling frequency
 fs = 160

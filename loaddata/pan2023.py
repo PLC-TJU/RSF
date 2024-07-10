@@ -1,6 +1,6 @@
 """
 cross-session motor imagery dataset from Pan et al 2023
-Author: Pan.LC <coreylin2023@outlook.com>
+Authors: Pan.LC <panlincong@tju.edu.cn>
 Date: 2024/3/18
 License: MIT License
 """
@@ -31,14 +31,6 @@ ID_List = [9865569,9865577,9865589,9865591,9865576,9865586,9865567,9865588,
            9865587,9865574,9865568,9865579,] # MATLAB v7文件ID 
 
 FILES = [f"https://dataverse.harvard.edu/api/access/datafile/{i}" for i in ID_List]
-
-
-def data_path(url, path=None, force_update=False, update_path=None, verbose=None):
-    return [dl.data_dl(url, "BNCI", path, force_update, verbose)]
-    # # Pan.LC 2024.03.30 添加  使得下载文件到指定目录
-    # if path is None:
-    #     path = os.path.join(os.getcwd(), 'datasets')
-
 
 def eeg_data_path(subject, base_path=''):
     """Load EEG data for a given subject from the Pan2023 dataset.
@@ -201,12 +193,13 @@ class Pan2023(BaseDataset):
             zeroshape = (data.shape[0], data.shape[1], 50)
             data = np.concatenate([np.zeros(zeroshape), data, np.zeros(zeroshape)], axis=2)
             
+            trialnum = int(data.shape[0]/4)
             out[str(sess_ind)] = {}
             for run_ind in range(4):
                 
                 raw = mne.io.RawArray(
                     # 30 trials per run/block
-                    data=np.concatenate(list(data[30*run_ind:30*(run_ind+1), :, :]), axis=1), info=info, verbose=False
+                    data=np.concatenate(list(data[trialnum*run_ind:trialnum*(run_ind+1), :, :]), axis=1), info=info, verbose=False
                 )
                 raw.set_montage(montage)   
             
