@@ -67,7 +67,7 @@ def train_and_evaluate(traindata, trainlabel, testdata, testlabel,
     except Exception as e:
         testacc = float('nan')
         elapsed_time = float('nan')
-        with open(os.path.join(floder_name, 'error_{}.txt'.format(dataset_name)), 'w') as f:
+        with open(os.path.join(floder_name, 'error_log.txt'), 'w') as f:
             f.write(f"Time: {time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))}\n")
             f.write(f"Error in {model_name} with {rsf_method} and {rsf_dim} on run {irun[0]}: {e}\n")
     return testacc, elapsed_time
