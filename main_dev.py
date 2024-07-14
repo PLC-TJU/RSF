@@ -35,7 +35,6 @@ def calc_acc(irun, traindata, trainlabel, testdata, testlabel, verbose = True, d
     # 训练模型并测试
     for model_name in algorithms:
         
-        # 训练模型并测试
         if not verbose:
             # 这行代码用于隐藏程序执行过程中的输出显示
             with open(os.devnull, 'w') as fnull, redirect_stdout(fnull), redirect_stderr(fnull):
@@ -81,11 +80,11 @@ def save_result(irun, result, filename):
         with gpu_lock:
             with open(filename, 'a') as f:
                 json.dump(result_dict, f)
-                f.write('\n')  # 换行，以便于读取时分割
+                f.write('\n')
     except:
         with open(filename, 'a') as f:
                 json.dump(result_dict, f)
-                f.write('\n')  # 换行，以便于读取时分割
+                f.write('\n') 
 
 # 检查已完成的计算并返回未完成的计算列表
 def check_completed_runs(filename, allrun):
@@ -94,7 +93,6 @@ def check_completed_runs(filename, allrun):
     completed_runs = []
     with open(filename, 'r') as f:
         lines = f.readlines()
-    # 检查文件是否包含子标题部分
     results_start = lines.index("results:\n") + 1 if "results:\n" in lines else 0
     for line in lines[results_start:]:
         if line.strip():
@@ -156,7 +154,6 @@ def main_processes(dataset, personID, allrun):
             )
     
     # 执行剩余的计算   
-    # 使用 parallel_backend 设置并行计算的后端，'loky'为多进程，'multiprocessing'为多线程
     print(f"一共有 {len(all_tasks)} 个计算任务。")
     with parallel_backend('loky', n_jobs=n_jobs):
         Parallel(batch_size=1, verbose=len(all_tasks))( # type: ignore

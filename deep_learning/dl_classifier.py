@@ -1,7 +1,7 @@
 """
 DeepL_Classifier: Deep Learning Classifier for EEG Data
 Author: Pan.LC <coreylin2023@outlook.com>
-Date: 2024/3/14
+Date: 2024/3/15
 License: MIT License
 
 Introduction:
@@ -176,7 +176,7 @@ class DL_Classifier(BaseEstimator, ClassifierMixin):
         self.nn_name = self.model_name.split('-')[-1] if '-' in self.model_name else self.model_name
         
         Process = None
-        if self.pp_name.lower() == 'rsf' or self.nn_name in ['Graph_CSPNet', 'Tensor_CSPNet', 'FBCNet']: # 原代码中没有加rsf
+        if self.pp_name.lower() == 'rsf' or self.nn_name in ['Graph_CSPNet', 'Tensor_CSPNet', 'FBCNet']:
             Process = Formatdata(fs=self.fs, n_times=X.shape[2], alg_name=self.nn_name, dtype=self.dtype,   
                                  rsf_method=self.rsf_method, rsf_dim=self.rsf_dim, freqband=self.freqband)
             X = Process.fit_transform(X, y)
