@@ -1,7 +1,7 @@
-braindecode==0.8.1
+braindecode
 einops==0.7.0
 geoopt==0.5.0
-h5py==3.8.0
+h5py
 joblib==1.2.0
 matplotlib==3.7.1
 metabci==0.1.2

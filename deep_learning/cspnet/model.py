@@ -155,7 +155,7 @@ class Graph_CSPNet(nn.Module):
     def _make_Graph_BiMap_block(self, layer_num):
 
         layers = []
-        _I     = th.eye(self.P.shape[0], dtype=self.P.dtype, device=self.P.device)  # 确保_I的device和dtype与P的一致性 Pan.LC 2024.3.14修改
+        _I     = th.eye(self.P.shape[0], dtype=self.P.dtype, device=self.P.device)  # 确保_I的device和dtype与P的一致性 LC.Pan 2024.3.14修改
         
         if layer_num > 1:
           dim_in, dim_out = self.dims[0], self.dims[1]

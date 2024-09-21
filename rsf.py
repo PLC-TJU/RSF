@@ -1,5 +1,5 @@
 # Riemannian Geometry-Based Spatial Filtering (RSF)
-# Author: LC.Pan <coreylin2023@outlook.com>
+# Author: LC.Pan <panlincong@tju.edu.cn.com>
 # Edition date: 5 Mar 2024
 
 import numpy as np

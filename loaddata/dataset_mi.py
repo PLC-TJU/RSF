@@ -1,5 +1,5 @@
 # This file is used to load the dataset and preprocess the data. 
-# Authors: Pan.LC <panlincong@tju.edu.cn>
+# Authors: LC.Pan <panlincong@tju.edu.cn>
 # Date: 2024/4/7
 
 # Pan et al. 对moabb库进行了一些可有可无的调整,用于灵活的修改数据集的保存地址,但这是不必要的。
@@ -111,7 +111,7 @@ class Dataset_MI:
     resample: float | None (default None)
         If not None, resample the eeg data with the sampling rate provided.
     
-    ** Pan.LC edited on 2024/4/7 额外添加的参数和功能，仅适用于Pan.LC改动后的moabb环境（原版moabb环境无法使用）
+    ** LC.Pan edited on 2024/4/7 额外添加的参数和功能，仅适用于LC.Pan改动后的moabb环境（原版moabb环境无法使用）
     path: str | None (default None)
         path to the dataset folder. If None, use the default path.
     

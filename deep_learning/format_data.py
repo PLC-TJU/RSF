@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 #
-# Author: Pan.LC <coreylin2023@outlook.com>
+# Author: LC.Pan <panlincong@tju.edu.cn.com>
 # Date: 2024/3/13
-# License: MIT License
+# License: BSD 3-Clause License
 """
     
    This is a script for formating the EEG data for deep learning models.

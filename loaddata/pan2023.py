@@ -1,8 +1,8 @@
 """
 cross-session motor imagery dataset from Pan et al 2023
-Authors: Pan.LC <panlincong@tju.edu.cn>
+Authors: LC.Pan <panlincong@tju.edu.cn>
 Date: 2024/3/18
-License: MIT License
+License: BSD 3-Clause License
 """
 
 import logging

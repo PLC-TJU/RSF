@@ -2,7 +2,7 @@
 #
 # Authors: Swolf <swolfforever@gmail.com>
 # Date: 2021/1/23
-# License: MIT License
+# License: BSD 3-Clause License
 """
 EEGNet.
 Modified from https://github.com/vlawhern/arl-eegmodels/blob/master/EEGModels.py

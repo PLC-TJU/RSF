@@ -1,7 +1,7 @@
 # This code is used for the paper "Enhancing Motor Imagery EEG Classification with a Riemannian Geometry-Based Spatial Filtering (RSF) Method"
-# Author: Pan.LC <coreylin2023@outlook.com>
+# Author: LC.Pan <panlincong@tju.edu.cn.com>
 # Date: 2024/3/18
-# License: MIT License
+# License: BSD 3-Clause License
 
 import os, time
 import json

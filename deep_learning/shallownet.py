@@ -2,7 +2,7 @@
 #
 # Authors: Swolf <swolfforever@gmail.com>
 # Date: 2021/7/06
-# License: MIT License
+# License: BSD 3-Clause License
 """
 ShallowFBCSP.
 Modified from https://github.com/braindecode/braindecode/blob/master/braindecode/models/shallow_fbcsp.py

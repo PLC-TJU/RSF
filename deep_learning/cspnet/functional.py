@@ -160,7 +160,7 @@ def modeig_backward(dx,U,S,S_fn,op,param=None):
     Input P: (batch_size,channels) SPD matrices of size (n,n)
     Output X: (batch_size,channels) modified symmetric matrices of size (n,n)
     '''
-    S_fn_deriv    = BatchDiag(op.fn_deriv(S,param).to(S.dtype))  # Pan.LC 2024.4.3 修改
+    S_fn_deriv    = BatchDiag(op.fn_deriv(S,param).to(S.dtype))  # LC.Pan 2024.4.3 修改
     SS            = S[...,None].repeat(1,1,1,S.shape[-1])
     SS_fn         = S_fn[...,None].repeat(1,1,1,S_fn.shape[-1])
     L             = (SS_fn-SS_fn.transpose(2,3))/(SS-SS.transpose(2,3))

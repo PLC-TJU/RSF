@@ -2,7 +2,7 @@
 #
 # Authors: Swolf <swolfforever@gmail.com>
 # Date: 2021/9/12
-# License: MIT License
+# License: BSD 3-Clause License
 """
 Conv-CA
 Modified from https://github.com/yaoli90/Conv-CA

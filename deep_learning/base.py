@@ -2,7 +2,7 @@
 #
 # Authors: Swolf <swolfforever@gmail.com>
 # Date: 2021/1/23
-# License: MIT License
+# License: BSD 3-Clause License
 from collections import OrderedDict
 
 import numpy as np
@@ -254,7 +254,7 @@ class SkorchNet:
         return net
 
 
-# Authors: Pan.LC
+# Authors: LC.Pan
 # Date: 2024/3/14
 # 现在可以在实例化模型时通过字典net_params传递参数（可选）来调整神经网络模型训练时的参数：
 # net_params = {
