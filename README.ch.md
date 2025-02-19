@@ -4,7 +4,7 @@
 
 ## 简介
 
-**Riemannian Geometry-Based Spatial Filtering (RSF)** 是一种基于黎曼几何的空间滤波方法，旨在提高电机想象（MI）和脑电图（EEG）信号分类的准确性。
+**Riemannian Geometry-Based Spatial Filtering (RSF)** 是一种基于黎曼几何的空间滤波方法，旨在提高运动想象（MI）脑电图（EEG）信号分类的准确性。
 
 ## 代码结构
 
