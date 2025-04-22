@@ -59,6 +59,21 @@ We used the following public datasets:
 | [Yi2014](https://doi.org/10.1371/journal.pone.0114853) | left/right hand |  160   |    60    |      4       |    10    |
 | **Total:**                                             |                 |        |          |              | **265**  |
 
+## Citation
+If you use this code, please cite:  
+```
+@article{pan2025rsf,
+  title={Enhancing Motor Imagery EEG Classification with a Riemannian Geometry-Based Spatial Filtering (RSF) Method}, 
+  author={Lincong, Pan and Kun, Wang and Yongzhi Huang and Xinwei, Sun and Jiayuan Meng and Weibo Yi and Minpeng, Xu and Tzyy-Ping Jung and Dong, Ming},
+  journal={Neural Networks},
+  year={2025},
+  month={April},
+  volume={...},
+  number={107511},
+  doi={10.1016/j.neunet.2025.107511},    
+  publisher={Elsevier}
+}
+```
 
 ## License and Attribution
 
