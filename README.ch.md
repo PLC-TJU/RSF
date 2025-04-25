@@ -67,7 +67,8 @@
   journal={Neural Networks},
   year={2025},
   month={April},
-  volume={...},
+  day={22},
+  volume={188C},
   number={107511},
   doi={10.1016/j.neunet.2025.107511},    
   publisher={Elsevier}
