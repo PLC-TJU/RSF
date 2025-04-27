@@ -69,7 +69,7 @@ If you use this code, please cite:
   year={2025},
   month={April},
   day={22},
-  volume={188C},
+  volume={188},
   number={107511},
   doi={10.1016/j.neunet.2025.107511},    
   publisher={Elsevier}
