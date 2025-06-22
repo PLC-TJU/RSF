@@ -61,7 +61,7 @@
 | **Total:**                                             |                 |        |          |              | **265**  |
 
 ## 引用方式
-如果您使用了本代码，请引用：
+如果您使用了本代码，请至少引用以下一篇文章， 非常感谢您的支持：  
 ```
 @article{pan2025rsf,
   title={Enhancing Motor Imagery EEG Classification with a Riemannian Geometry-Based Spatial Filtering (RSF) Method}, 
@@ -74,6 +74,18 @@
   number={107511},
   doi={10.1016/j.neunet.2025.107511},    
   publisher={Elsevier}
+}
+
+@article{pan2023rave,
+  title={Riemannian geometric and ensemble learning for decoding cross-session motor imagery electroencephalography signals}, 
+  author={Lincong, Pan and Kun, Wang and Lichao Xu and Xinwei, Sun and Weibo Yi and Minpeng, Xu and Dong, Ming},
+  journal={Journal of Neural Engineering},
+  year={2023},
+  volume={20},
+  number={6},
+  pages={066011},
+  doi={10.1088/1741-2552/ad0a01},    
+  publisher={IOP Publishing}
 }
 ```
 
