@@ -16,6 +16,8 @@
 - **requirements.txt**: Lists all dependencies required to run the project.
 - **rsf.py**: Contains the core code for implementing the RSF method.
 
+- **matlab version**: We have added a MATLAB version of RSF, the code is located in the `matlab version` folder.
+
 ## Installation Guide
 
 To install and run the project, please follow these steps:

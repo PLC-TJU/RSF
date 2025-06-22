@@ -16,6 +16,8 @@
 - **requirements.txt**: 列出项目运行所需的所有依赖项。
 - **rsf.py**: 包含实现RSF方法的核心代码。
 
+- **matlab version**: 我们新增了RSF的MATLAB版本，代码位于 `matlab version` 文件夹下。
+
 ## 安装指南
 
 要安装和运行该项目，请按照以下步骤操作：
